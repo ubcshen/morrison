@@ -1,0 +1,112 @@
+/** Import Bootstrap functions */
+@import "~bootstrap/scss/functions";
+
+$theme-colors: (
+  primary: #fff
+);
+
+/** Bootstrap navbar fix (https://git.io/fADqW) */
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
+
+@font-face {
+  font-family: "latoregular";
+  src: url("/wp-content/themes/morrison2018/fonts/Lato-Regular.eot");
+  src: url("/wp-content/themes/morrison2018/fonts/Lato-Regular.eot#iefix")
+      format("embedded-opentype"),
+    url("/wp-content/themes/morrison2018/fonts/Lato-Regular.woff")
+      format("woff"),
+    url("/wp-content/themes/morrison2018/fonts/Lato-Regular.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "arimoregular";
+  src: url("/wp-content/themes/morrison2018/fonts/Arimo-Regular-webfont.eot");
+  src: url("/wp-content/themes/morrison2018/fonts/Arimo-Regular-webfont.eot#iefix")
+      format("embedded-opentype"),
+    url("/wp-content/themes/morrison2018/fonts/Arimo-Regular-webfont.woff")
+      format("woff"),
+    url("/wp-content/themes/morrison2018/fonts/Arimo-Regular-webfont.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$btn-font: "arimoregular", sans-serif;
+$default-font: "latoregular", sans-serif;
+
+$default-font-color: #5f5d5d;
+$h-font-color: #053f61;
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+  -moz-box-sizing: $box-model; // Firefox <= 19
+  box-sizing: $box-model;
+}
+
+@mixin box-shadow($values) {
+  -moz-box-shadow: $values;
+  -webkit-box-shadow: $values;
+  box-shadow: $values;
+}
+
+@function calculaterem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size-sass($size) {
+  font-size: $size;
+  font-size: calculaterem($size);
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box; /* stops bg color from leaking outside the border: */
+}
+
+@mixin transition($rule) {
+  -webkit-transition: $rule;
+  -ms-transition: $rule;
+  -moz-transition: $rule;
+  transition: $rule;
+}
+
+@mixin transition2x($rule, $rule2) {
+  -webkit-transition: $rule, $rule2;
+  -ms-transition: $rule, $rule2;
+  -moz-transition: $rule, $rule2;
+  transition: $rule, $rule2;
+}
+
+@mixin transition3x($rule, $rule2, $rule3) {
+  -webkit-transition: $rule, $rule2, $rule3;
+  -ms-transition: $rule, $rule2, $rule3;
+  -moz-transition: $rule, $rule2, $rule3;
+  transition: $rule, $rule2, $rule3;
+}
+
+@mixin transition4x($rule, $rule2, $rule3, $rule4) {
+  -webkit-transition: $rule, $rule2, $rule3, $rule4;
+  -ms-transition: $rule, $rule2, $rule3, $rule4;
+  -moz-transition: $rule, $rule2, $rule3, $rule4;
+  transition: $rule, $rule2, $rule3, $rule4;
+}

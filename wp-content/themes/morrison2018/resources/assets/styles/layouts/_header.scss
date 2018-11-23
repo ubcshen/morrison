@@ -1,0 +1,15 @@
+.banner .nav li {
+  @extend .nav-item;
+}
+
+.banner .nav a {
+  @extend .nav-link;
+}
+
+.banner {
+  background-color: #353535;
+  height: 125px;
+  .inner-container {
+    padding: 1em 0;
+  }
+}
