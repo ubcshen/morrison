@@ -1,0 +1,310 @@
+.section-tabs {
+  padding: 2.5rem 0 6rem;
+  h1 {
+    margin: 0.83em 0;
+    @include breakpoint(medium800-down) {
+      margin: 0 auto;
+    }
+  }
+  .inner-container h3 {
+    margin-top: 1.5rem;
+  }
+  @include breakpoint(medium1300-down) {
+    padding: 2.5rem 2rem 4rem;
+  }
+}
+
+.section-html {
+  padding: 2.5rem 0;
+  h2 {
+    margin: 0.83em 0;
+    @include breakpoint(medium1150-down) {
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+  h1 {
+    margin: 2rem 0;
+    @include breakpoint(medium1150-down) {
+      margin: 2rem auto;
+      text-align: center;
+    }
+  }
+  @include breakpoint(medium800-down) {
+    .inner-container {
+      padding: 0;
+      text-align: center;
+    }
+  }
+  @include breakpoint(small640-down) {
+    padding-top: 1.5rem;
+  }
+}
+
+.contact,
+.careers {
+  .content {
+    background-color: #4a4a4a;
+    h1,
+    .contact-container span,
+    a {
+      color: #d3d6d7;
+      line-height: 30px;
+    }
+    a:hover {
+      color: #c7a451;
+    }
+    .wpcf7-text {
+      width: calc(100% - 15px);
+    }
+    .wpcf7-text,
+    .wpcf7-textarea {
+      padding: 10px;
+      @include font-size-sass(14.4px);
+      color: #95989a;
+      background-color: #353535;
+      border: 0;
+      outline: none;
+      margin: 5px 0;
+    }
+  }
+  .section-html h2 {
+    margin: 2rem auto;
+  }
+  .submit-form {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+    background-color: buttonface;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+    background-color: #c6a952;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    cursor: pointer;
+    line-height: normal;
+  }
+  .contact-container {
+    margin: 3rem auto;
+    width: 90%;
+    .address {
+      overflow: hidden;
+      margin: 0.875rem 0;
+      @include breakpoint(medium900-down) {
+        float: left;
+      }
+      @include breakpoint(medium800-down) {
+        float: none;
+      }
+    }
+    .address-container {
+      width: 23%;
+      .address-left {
+        width: 75px;
+      }
+      @include breakpoint(medium900-down) {
+        width: 100%;
+        .address-left {
+          width: 100%;
+        }
+      }
+    }
+    .contact-form {
+      width: 73%;
+      @include breakpoint(medium900-down) {
+        width: 100%;
+      }
+    }
+    .wpcf7-form p {
+      @include breakpoint(medium900-down) {
+        text-align: center;
+      }
+    }
+    span.wpcf7-form-control-wrap {
+      width: 50%;
+      &.your-message {
+        width: 100%;
+        textarea {
+          width: calc(100% - 15px);
+        }
+      }
+    }
+  }
+}
+
+.careers {
+  p,
+  a {
+    color: #fff;
+  }
+  a:hover {
+    color: #c7a451;
+  }
+  h1,
+  h2,
+  h3 {
+    color: #d3d6d7;
+  }
+}
+
+.real-estate {
+  .section-html h3 {
+    text-align: center;
+  }
+  .section-html .inner-container {
+    width: 65%;
+    margin: 0 auto;
+    @include breakpoint(medium900-down) {
+      width: 92%;
+    }
+  }
+  .real-estate-logo-wrap {
+    margin: 20px auto 0;
+    padding-bottom: 50px;
+    display: block;
+    text-align: center;
+  }
+  .real-estate-logo {
+    width: calc(80% / 2 - 75px);
+    display: inline-block;
+    padding: 20px;
+    padding-top: 6.5%;
+    padding-bottom: 6.5%;
+    border: solid 1px #353535;
+    margin: 15px;
+    text-align: center;
+    vertical-align: center;
+    margin-top: 20px;
+    @include breakpoint(medium900-down) {
+      width: calc(100% / 2 - 40px);
+    }
+    @include breakpoint(small580-down) {
+      width: calc(100% - 40px);
+    }
+  }
+  .real-estate-logo img {
+    width: 75%;
+  }
+  .real-estate-div-table-cell {
+    height: 600px;
+    @include breakpoint(small580-down) {
+      width: 100%;
+      display: block;
+    }
+  }
+}
+
+.news {
+  .news-div {
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+  }
+  .news-wrap {
+    margin: 0 auto;
+    padding-bottom: 50px;
+    width: 100%;
+  }
+  .news-post {
+    width: calc(100% / 3 - 30px);
+    padding: 0;
+    border: 0;
+    margin: 15px;
+    text-align: left;
+    vertical-align: top;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 3px 15px 2px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 3px 15px 2px rgba(50, 50, 50, 0.5);
+    box-shadow: 0px 3px 15px 2px rgba(50, 50, 50, 0.5);
+    position: relative;
+    @include breakpoint(medium800-down) {
+      width: calc(100% / 2 - 40px);
+    }
+    @include breakpoint(small640-down) {
+      width: calc(100% - 30px);
+    }
+  }
+  .news-post img {
+    width: 100%;
+  }
+  .news-post-wrap {
+    position: relative;
+    padding: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .news-post-wrap p {
+    line-height: 20px;
+    font-size: 0.9em;
+    padding: 0;
+    margin: 14.4px 0;
+  }
+}
+
+.careers {
+  /*.contact-container {
+    width: 70%;
+    padding-top: 30px;
+    padding-bottom: 80px;
+    position: relative;
+    margin: 0 auto;
+    color: #fff;
+  }*/
+  .section-careers {
+    padding: 0;
+  }
+  .career-job-list {
+    position: relative;
+    background-color: #353535;
+    padding: 30px;
+    color: #4f4f4f;
+    p {
+      line-height: 40px;
+      padding: 10px 0;
+      @include breakpoint(small640-down) {
+        line-height: 1.6;
+      }
+    }
+    @include breakpoint(small640-down) {
+      padding: 15px;
+    }
+  }
+  h3 {
+    margin-bottom: 30px;
+  }
+  p {
+    padding: 0;
+  }
+  .career-job-list a,
+  .career-job-list a:link,
+  .career-job-list a:visited,
+  .career-job-list a:focus,
+  .career-job-list a:active {
+    color: #fff;
+  }
+  .download-container {
+    margin: 0 auto 3rem;
+    margin-top: 0;
+    width: 90%;
+  }
+  .section-html {
+    padding-bottom: 0;
+    .contact-container {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -10,6 +10,37 @@ $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
 
 @font-face {
+  font-family: 'latoregular';
+  src: url('/wp-content/themes/morrison2018/fonts/lato-regular-webfont.woff2') format('woff2'),
+       url('/wp-content/themes/morrison2018/fonts/lato-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'arimoregular';
+  src: url('/wp-content/themes/morrison2018/fonts/arimo-regular-webfont.woff2') format('woff2'),
+       url('/wp-content/themes/morrison2018/fonts/arimo-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "fontello";
+  src: url("/wp-content/themes/morrison2018/fonts/font/fontello.eot");
+  src: url("/wp-content/themes/morrison2018/fonts/font/fontello.eot#iefix")
+      format("embedded-opentype"),
+    url("/wp-content/themes/morrison2018/fonts/font/fontello.woff")
+      format("woff"),
+    url("/wp-content/themes/morrison2018/fonts/font/fontello.ttf")
+      format("truetype"),
+    url("/wp-content/themes/morrison2018/fonts/font/fontello.svg#fontello")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+@font-face {
   font-family: "latoregular";
   src: url("/wp-content/themes/morrison2018/fonts/Lato-Regular.eot");
   src: url("/wp-content/themes/morrison2018/fonts/Lato-Regular.eot#iefix")
@@ -33,7 +64,7 @@ $navbar-light-toggler-icon-bg: none;
       format("truetype");
   font-weight: normal;
   font-style: normal;
-}
+}*/
 
 $btn-font: "arimoregular", sans-serif;
 $default-font: "latoregular", sans-serif;

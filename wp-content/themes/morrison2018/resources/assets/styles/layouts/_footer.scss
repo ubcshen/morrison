@@ -5,4 +5,24 @@
   .footer-text {
     margin: 1.125em;
   }
+  .brand {
+    img {
+      width: 200px;
+      height: auto;
+      @include breakpoint(medium800-down) {
+        width: 170px;
+      }
+    }
+  }
+  @include breakpoint(medium800-down) {
+    text-align: center;
+    height: auto;
+    .inline {
+      display: block;
+      margin: 0.875em auto;
+    }
+    .footer-text {
+      margin: 0;
+    }
+  }
 }

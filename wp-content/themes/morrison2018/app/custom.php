@@ -293,12 +293,10 @@ function build_sections()
         while( has_sub_field("section_builder") )
         {
             if( get_row_layout() == "section_html" ) // layout: Section Html
-            {
-                $contentAlignement = get_sub_field("text_alignment");
-            ?>
-                <section class="container section-html <?php if(get_sub_field("has_top_border")) { echo 'hasTopbar'; } ?>" style="text-align: <?php echo $contentAlignement; ?>">
+            { ?>
+                <section class="container section-html">
                     <div class="inner-container">
-                        <?php echo get_sub_field("html_field"); ?>
+                      <?php echo get_sub_field("html_field"); ?>
                     </div>
                 </section>
             <?php }
@@ -309,7 +307,7 @@ function build_sections()
                 $image = get_sub_field('section_2_cols_full_width_image');
                 $noImage = get_sub_field('if_no_image_but_still_need_space');
             ?>
-                <section class="section-2-cols-full-width <?php echo get_sub_field("section_2_cols_full_width_class"); ?>">
+                <section class="section-2-cols-full-width <?php echo get_sub_field("section_2_cols_full_width_class"); ?>" id="<?php echo get_sub_field("section_2_cols_full_width_id"); ?>">
                   <div class="table-cell">
                     <?php if($image) { ?>
                       <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" width="<?php echo $image['width']; ?>" height="<?php echo $image['height']; ?>" class="img-responsive half f<?php echo $imageAlignment; ?> imgHalf" />
@@ -348,6 +346,22 @@ function build_sections()
             ?>
                 <section class="section-banner normalHeight">
                   <img src="<?php echo $image['url']; ?>" alt="banner" width="<?php echo $image['width']; ?>" height="<?php echo $image['height']; ?>" class="img-responsive" />
+                </section>
+            <?php }
+            elseif( get_row_layout() == "section_careers" ) // layout: Section Careers
+            { ?>
+                <section class="section-careers container">
+                  <div class="inner-container">
+                    <div class="download-container">
+                      <div class="career-job-list">
+                        <?php
+                          while(has_sub_field('section_career')):
+                        ?>
+                        <p><a href="<?php echo get_sub_field("career_file"); ?>" target="_blank"><?php echo get_sub_field("career"); ?></a></p>
+                        <?php endwhile; ?>
+                      </div>
+                    </div>
+                  </div>
                 </section>
             <?php }
             elseif( get_row_layout() == "section_cols" ) // layout: Section Cols
@@ -413,47 +427,72 @@ function build_sections()
                     </div>
                 </section>
             <?php }
-            elseif( get_row_layout() == "section_select_members" ) // layout: Section Select Members
-            {
-                $enableLightbox = get_sub_field("enable_lightbox");
-                ?>
-                <section class="container section-select-members <?php if(get_sub_field("has_topborder")) { echo 'hasTopbar'; } ?>">
-                    <h2><?php echo get_sub_field("section_select_members_title"); ?></h2>
-                    <div class="members">
-                    <?php
-                          $post_objects = get_sub_field('members');
-                          if( $post_objects ): $i = 0;
-                            foreach( $post_objects as $post):
-                                $image = wp_get_attachment_image_src(get_field('member_pic',$post->ID), "member-thumbnail");
-                                $imageFull = wp_get_attachment_image_src(get_field('member_lightbox_pic',$post->ID), "full");
-                                $memberGovernmentMember = get_field("member_governance_title",$post->ID);
-                        ?>
-                        <div class="member <?php if($enableLightbox) { echo "member-fancybox"; } ?>" <?php if($enableLightbox) { echo "data-lightbox='.member-profile-" . $i . "'"; } ?>>
-                            <img src="<?php echo $image[0]; ?>" alt="<?php echo get_the_title($post->ID); ?>" width="390" height="390" class="img-responsive team-member" />
-                            <div class="item-content">
-                                <h4><?php echo get_the_title($post->ID); ?></h4>
-                                <?php if($memberGovernmentMember&&is_page("governance")) { ?>
-                                <p class="person-title"><?php echo $memberGovernmentMember; ?></p>
-                                <?php } else { ?>
-                                <p class="person-title"><?php echo get_field("member_job",$post->ID); ?></p>
-                                <?php } ?>
-                            </div>
-                            <div class="hidden">
-                                <div class="member-profile member-profile-<?php echo $i; ?>">
-                                    <h5><?php echo get_the_title($post->ID); ?></h5>
-                                    <?php if($memberGovernmentMember&&is_page("governance")) { ?>
-                                    <p class="person-title"><?php echo $memberGovernmentMember; ?></p>
-                                    <?php } else { ?>
-                                    <p class="person-title"><?php echo get_field("member_job",$post->ID); ?></p>
-                                    <?php } ?>
-                                    <img src="<?php echo $imageFull[0]; ?>" alt="<?php echo get_the_title($post->ID); ?>" width="<?php echo $imageFull[1]; ?>" height="<?php echo $imageFull[2]; ?>" class="img-responsive team-member" />
-                                    <p class="pic-credit"><?php echo get_field("pic_credit", $post->ID); ?></p>
-                                    <p class="profile"><?php echo get_field("member_profile",$post->ID); ?></p>
-                                </div>
-                            </div>
+            elseif( get_row_layout() == "section_tabs" ) // layout: section_tabs
+            { ?>
+                <section class="container section-tabs">
+                  <h1><?php echo get_sub_field("tabs_title"); ?></h1>
+                  <div class="section-tabs-left fLeft">
+                      <?php $i = 0;
+                          while(has_sub_field('tabs')):
+                              $tab = strtolower(get_sub_field("tab"));
+                              $tab = preg_replace('/\s+/', '_', $tab);
+                      ?>
+                          <h3 class='filter-list filter-list-item <?php if($i==0) echo "tab-active"; ?>' data-value='#<?php echo $tab; ?>'><?php echo get_sub_field("tab"); ?></h3>
+                      <?php $i++; endwhile; ?>
+                  </div>
+                  <div class="grid section-content fLeft">
+                      <?php
+                        while(has_sub_field('tabs')):
+                          $tab = strtolower(get_sub_field("tab"));
+                          $tab = preg_replace('/\s+/', '_', $tab);
+                      ?>
+                      <div class="<?php echo $tab; ?> element-item" id="<?php echo $tab; ?>">
+                          <div class="inner-container"><?php echo get_sub_field("tab_content"); ?></div>
+                      </div>
+                      <?php endwhile; ?>
+                  </div>
+                </section>
+            <?php }
+            elseif( get_row_layout() == "section_news_list" ) // layout: Section News List
+            { ?>
+                <section class="container section-news-list">
+                  <div class="news-div">
+                    <div class="news-wrap">
+                      <?php
+                        while(has_sub_field('section_news')):
+                          $image = get_sub_field('news_image');
+                      ?>
+                      <div class="news-post">
+                        <a href="<?php echo get_sub_field("news_download"); ?>" target="_blank"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" width="<?php echo $image['width']; ?>" height="<?php echo $image['height']; ?>" class="img-responsive" /></a>
+                        <div class="news-post-wrap">
+                          <p><strong><?php echo get_sub_field("news_title"); ?></strong></p>
+                          <p><?php echo get_sub_field("news_time"); ?></p>
+                          <?php echo get_sub_field("news_info"); ?>
+                          <p style="text-align:right"><a href="<?php echo get_sub_field("news_download"); ?>" target="_blank">&gt;&gt; Read More</a></p>
                         </div>
-                        <?php $i++; endforeach; wp_reset_postdata(); endif; ?>
+                      </div>
+                    <?php endwhile; ?>
                     </div>
+                  </div>
+                </section>
+            <?php }
+            elseif( get_row_layout() == "section_two_image_cols" ) // layout: Section Two Image Cols
+            { ?>
+                <section class="section-two-image-cols">
+                  <div class="div-table">
+                    <div class="div-table-row">
+                      <?php $i = 0;
+                        while(has_sub_field('section_two_image_col')):
+                          //$image = get_sub_field('section_two_image_col_image');
+                          load_Img(".ca_property_bg_". $i, "section_two_image_col_image");
+                      ?>
+                      <div class="real-estate-div-table-cell ca_property_bg ca_property_bg_<?php echo $i; ?>">
+                        <div class="overlay"></div>
+                        <a href="<?php echo get_sub_field("section_two_image_col_btn_link"); ?>"><div class="real-estate-dept"><?php echo get_sub_field("section_two_image_col_btn"); ?></div></a>
+                      </div>
+                      <?php $i++; endwhile; ?>
+                    </div>
+                  </div>
                 </section>
             <?php }
             elseif( get_row_layout() == "section_news" && get_sub_field("load_news")) // layout: Section Intro

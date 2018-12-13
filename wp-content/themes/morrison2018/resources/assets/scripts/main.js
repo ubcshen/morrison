@@ -6,6 +6,9 @@ import "./autoload/**/*"
 
 // import local dependencies
 import Router from './util/Router';
+import "./util/isotope.pkgd.min";
+import "./util/masonry.pkgd.min";
+//import "./util/manual-trigger";
 import common from './routes/common';
 import home from './routes/home';
 import aboutUs from './routes/about';

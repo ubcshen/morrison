@@ -33,13 +33,20 @@ module.exports = {
   },
   "rules": {
     "no-console": 0,
+    "no-unused-vars": 0,
+    "no-cond-assign": 0,
+    "no-extra-boolean-cast": 0,
+    "no-undef": 0,
+    "no-useless-escape": 0,
+    "no-empty": 0,
+    "no-control-regex": 0,
     "comma-dangle": [
       "error",
       {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "always-multiline",
-        "exports": "always-multiline",
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
         "functions": "ignore"
       }
     ]

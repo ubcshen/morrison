@@ -1,6 +1,6 @@
 %font-smoothing {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  //-webkit-font-smoothing: antialiased;
+  //-moz-osx-font-smoothing: grayscale;
   .isWindowsChrome & {
     -webkit-font-smoothing: subpixel-antialiased;
   }
@@ -232,6 +232,10 @@
     @media (max-width: 568px) {
       @content;
     }
+  } @else if $point == small500-down {
+    @media (max-width: 500px) {
+      @content;
+    }
   } @else if $point == small480-up {
     @media (min-width: 481px) {
       @content;
@@ -390,27 +394,15 @@ img {
 h1,
 h2 {
   font-weight: 600;
+  @include breakpoint(medium800-down) {
+    width: 90%;
+  }
 }
 
 h1 {
   @include font-size-sass(36px);
   color: $h-font-color;
-  a {
-    color: #b0291c;
-    text-decoration: none;
-    &:hover {
-      color: #ab9767;
-    }
-  }
-  @include breakpoint(medium1390-down) {
-    line-height: 1.3;
-    margin-bottom: 10px;
-  }
-  @include breakpoint(medium750-down) {
-    @include font-size-sass(32px);
-    line-height: 1.125;
-    letter-spacing: -0.89px;
-  }
+  text-transform: uppercase;
 }
 
 html {
@@ -505,6 +497,7 @@ hr.short {
 
 .section-banner {
   max-height: 960px;
+  width: 100%;
 }
 
 h1,
@@ -521,6 +514,9 @@ h2 {
 
 h2 {
   @include font-size-sass(32px);
+  @include breakpoint(medium1150-down) {
+    @include font-size-sass(28px);
+  }
 }
 
 h3 {
@@ -531,6 +527,17 @@ p {
   line-height: 40px;
   @include font-size-sass(16px);
   color: #5f5d5d;
+  @include breakpoint(medium1070-down) {
+    line-height: 2;
+  }
+  @include breakpoint(medium800-down) {
+    @include font-size-sass(14px);
+    line-height: 1.6;
+  }
+  @include breakpoint(small640-down) {
+    line-height: 30px;
+     @include font-size-sass(13px);
+  }
 }
 
 .half {
@@ -538,14 +545,18 @@ p {
 }
 
 .section-2-cols-full-width {
-  &.padding50 {
-    padding: 3.125em 0;
-  }
   overflow: hidden;
   display: table;
   width: 100%;
   .table-cell {
     display: table-row;
+    @include breakpoint(medium767-down) {
+      display: block;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
     /*img {
       width: 100%;
     }*/
@@ -560,6 +571,34 @@ p {
   .inner-container {
     width: 65%;
     text-align: center;
+    @include breakpoint(medium1070-down) {
+      width: 84%;
+      p {
+        line-height: 2;
+      }
+    }
+    @include breakpoint(medium800-down) {
+      width: 90%;
+      p {
+        line-height: 1.6;
+      }
+    }
+    a {
+      margin-top: 10px;
+    }
+  }
+}
+
+.padding50 {
+  padding: 3.125em 0;
+  @include breakpoint(medium800-down) {
+    padding: 1.625em 0;
+  }
+}
+
+.textLeft {
+  .inner-container {
+    text-align: left;
   }
 }
 
@@ -589,4 +628,255 @@ a:link {
     @include font-size-sass(12.8px);
     margin-left: 2.175em;
   }
+}
+
+img {
+  width: 100%;
+}
+
+section {
+  overflow: hidden;
+}
+
+.section-tabs {
+  .section-tabs-left {
+    padding: 1.7rem 0;
+    width: 30%;
+  }
+  .section-content {
+    width: 50%;
+    margin-bottom: 4rem;
+  }
+  @include breakpoint(medium1300-down) {
+    .section-content {
+      width: 65%;
+      margin-bottom: 2rem;
+    }
+  }
+  @include breakpoint(medium1200-down) {
+    .section-content {
+      float: right;
+    }
+  }
+  @include breakpoint(medium1200-down) {
+    .section-content {
+      width: 100%;
+      float: none;
+      margin-bottom: 0;
+    }
+    .section-tabs-left {
+      //padding: 1.7rem 0;
+      width: 100%;
+      float: none;
+      padding-bottom: 0;
+      text-align: center;
+      .filter-list-item {
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        &:last-child {
+          margin-left: 20px;
+        }
+        @include breakpoint(small500-down) {
+          display: block;
+          &:last-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.filter-list-item {
+  margin-bottom: 2rem;
+  &.tab-active {
+    text-decoration: underline;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  @include breakpoint(medium1000-down) {
+    @include font-size-sass(18px);
+  }
+}
+
+.hasLine {
+  position: relative;
+  margin-top: 15px;
+  &::before,
+  &::after {
+    content: "";
+    background: #353535;
+    width: 33%;
+    display: block;
+    position: absolute;
+    height: 1px;
+    top: 17px;
+    @include breakpoint(medium900-down) {
+      width: 24%;
+    }
+    @include breakpoint(small580-down) {
+      width: 18%;
+    }
+    @include breakpoint(small500-down) {
+      width: 16%;
+    }
+    @include breakpoint(small380-down) {
+      top: 14px;
+    }
+  }
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+  }
+}
+
+.div-table {
+  display: table;
+  /* table-layout: fixed; */
+  width: 100%;
+}
+
+.div-table-row {
+  display: table-row;
+}
+
+.real-estate-div-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  overflow: hidden;
+  position: relative;
+  width: 50%;
+}
+
+.ca_property_bg {
+  text-align: center;
+}
+
+.ca_property_bg:hover > .overlay,
+.ca_property_bg:focus > .overlay {
+  opacity: 0;
+}
+
+.ca_property_bg > .overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: 100;
+  display: block;
+}
+
+.real-estate-dept {
+  margin: 0 auto;
+  display: inline-block;
+  padding: 20px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border: solid 1px #fff;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  color: #fff;
+  z-index: 101;
+  font-size: 1.1em;
+  font-weight: bold;
+  @include breakpoint(small580-down) {
+    top: 50%;
+    margin-top: -36px;
+  }
+}
+
+.imgHalf.fRight {
+  float: right;
+  @include breakpoint(medium767-down) {
+    float: none;
+    width: 100%;
+    display: block;
+  }
+}
+
+.content.fLeft {
+  float: left;
+  //width: 100%;
+  @include breakpoint(medium767-down) {
+    float: none;
+    width: 100%;
+    display: block;
+    padding: 20px 0 10px;
+  }
+}
+
+.imgHalf.fLeft {
+  float: left;
+  @include breakpoint(medium767-down) {
+    float: none;
+    width: 100%;
+    display: block;
+  }
+}
+
+.content.fRight {
+  float: right;
+  //width: 100%;
+  @include breakpoint(medium767-down) {
+    float: none;
+    width: 100%;
+    display: block;
+    padding: 20px 0 10px;
+  }
+}
+
+.padding50 .content.fRight {
+  @include breakpoint(medium800-down) {
+    width: 100%;
+  }
+}
+
+.content {
+  .inner-container {
+    @include breakpoint(small640-down) {
+      padding: 20px 0;
+      h3 {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+[class^="icon-"]::before,
+[class*=" icon-"]::before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: 0.2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu::before {
+  content: "\f0c9";
+  font-size: 20px;
+  color: #fff;
+} /* '' */
+
+div.wpcf7-mail-sent-ok,
+.wpcf7-response-output {
+  color: #fff;
+  @include font-size-sass(16px);
+  padding: 20px 10px;
 }
