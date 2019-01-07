@@ -461,14 +461,18 @@ function build_sections()
                       <?php
                         while(has_sub_field('section_news')):
                           $image = get_sub_field('news_image');
+                          $hasLink = get_sub_field("news_download"); 
                       ?>
                       <div class="news-post">
-                        <a href="<?php echo get_sub_field("news_download"); ?>" target="_blank"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" width="<?php echo $image['width']; ?>" height="<?php echo $image['height']; ?>" class="img-responsive" /></a>
+                        <?php if($hasLink) { ?><a href="<?php echo $hasLink; ?>" target="_blank"><?php } ?><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" width="<?php echo $image['width']; ?>" height="<?php echo $image['height']; ?>" class="img-responsive" /><?php if($hasLink) { ?></a><?php } ?>
+                        <?php if(!is_page("news")) { ?><p class="projects-district"><strong><?php echo get_sub_field("news_title"); ?></strong></p><?php } ?>
                         <div class="news-post-wrap">
+                          <?php if(is_page("news")) { ?>
                           <p><strong><?php echo get_sub_field("news_title"); ?></strong></p>
                           <p><?php echo get_sub_field("news_time"); ?></p>
+                          <?php } ?>
                           <?php echo get_sub_field("news_info"); ?>
-                          <p style="text-align:right"><a href="<?php echo get_sub_field("news_download"); ?>" target="_blank">&gt;&gt; Read More</a></p>
+                          <?php if($hasLink) { ?><p style="text-align:right"><a href="<?php echo $hasLink; ?>" target="_blank">&gt;&gt; Read More</a></p><?php } ?>
                         </div>
                       </div>
                     <?php endwhile; ?>

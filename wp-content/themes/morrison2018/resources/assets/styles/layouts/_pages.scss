@@ -206,7 +206,7 @@
   }
 }
 
-.news {
+.news, .us-projects, .ca-projects {
   .news-div {
     width: 80%;
     position: relative;
@@ -238,6 +238,7 @@
   }
   .news-post img {
     width: 100%;
+    display: block;
   }
   .news-post-wrap {
     position: relative;
@@ -252,6 +253,22 @@
     font-size: 0.9em;
     padding: 0;
     margin: 14.4px 0;
+    img {
+      width: 65%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.projects-district {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+  background-color: #c7a451;
+  font-weight: bold;
+  strong {
+    color: #fff;
   }
 }
 
